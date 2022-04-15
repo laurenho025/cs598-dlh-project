@@ -1,70 +1,45 @@
+# CS 598 DLH Project - Patient Phenotyping
 
-# Patient Phenotyping
+albertc4, laurenh4
 
-This repository contains the code and data for the paper 
-"Comparing deep learning and concept extraction based methods for patient phenotyping".
+Group ID: 20
 
+Paper ID: 116
 
-## Data 
+Code re-used from the original paper author: https://github.com/sebastianGehrmann/phenotyping
 
-In data/annotations.csv, you can find our annotations as well 
-as unique identifiers for patient visits in MIMIC-III, namely 
-the hospital admission ID, subject ID, and chart time. 
-Due to HIPAA requirements, we cannot provide the text of the patients' 
-discharge summary in this repository. With the information 
-named above and access to MIMIC-III, it is easy to extract the text 
-from the identifiers. 
-We are in the process of submitting the annotations as a direct
-add-on to MIMIC-III to physionet which will make the linking-step 
-obsolete. If you experience difficulties with the data, please 
-contact us and we are happy to help! 
+## Data
 
-In the following sections, we assume that annotations.csv is extended
-by an additional column named "text" that contains the discharge summary.
+Due to patient confidentiality requirements, we are not including the annotated dataset in this repository. The `data/annotations.csv` file is available in the linked google drive folder in our written report. This file contains patient and hospital admission IDs, and the annotations done by the original paper authors.
 
-If you want to use the same word-embeddings we use, please download them here: https://drive.google.com/open?id=1v_89KD993yXhYhsQQNZiwwFoy3aUD9Oq
-
-## Code
-
-Here is how to run the code for baselines and deep learning components. 
+## Running The Code
 
 ### Preprocessing
 
-To run all the code on the same training and test splits, we provide preprocessing code in
-preprocessing.py. We assume that you ran word2vec on the extracted texts first and saved 
-the resulting vectors in a file named "w2v.txt". If you need assistance or want to use
-our vectors, please contact us (as the file size is too large for this repository).
-
-run it with the following command (with python 2.7): 
+The word2vec results were provided by the original paper authors, and are included in the google drive folder as `w2v.txt`. The preprocessed data files `data.h5` and `data-nobatch.h5` are also included in the google drive folder. To generate these files on your own, you can run the following command with python 3:
 
 ```
-python preprocess.py data/annotations.csv w2v.txt 
+python preprocess.py data/annotations.csv w2v.txt --batchsize=5
 ```
 
-This will create one file data.h5 and one file data-nobatch.h5 in your main directory. 
-Use the batched file for a speedup in the lua code, and the non-batched file for the baselines. 
+This will create `data.h5` and `data-nobatch.h5` in the root folder.
 
+### Baseline Methods
 
-
-
-### Baselines
-
-The code for baselines can be found in basic_models.py. It is compatible with both 
-python 2 and 3. To run it, simply enter
+To run the baseline methods:
 
 ```
 python basic_models.py --data data-nobatch.h5 --ngram 5
 ```
 
+### Convolutional Neural Net (CNN)
 
-### Convolutional Neural Net
+TODO: Update CNN instructions
 
-We recommend that you have a GPU with a cuda installation. Otherwise, training might take 
+We recommend that you have a GPU with a cuda installation. Otherwise, training might take
 a very long time! This code is based off of the following repository:
-https://github.com/harvardnlp/sent-conv-torch 
+https://github.com/harvardnlp/sent-conv-torch
 You can find more information there!
-
-
 
 #### Install Torch
 
@@ -80,7 +55,6 @@ cd distro; bash install-deps;
 
     luarocks install hdf5
 
-
 #### Running the code
 
 Please run the code with the following command:
@@ -89,7 +63,7 @@ Please run the code with the following command:
 th main.lua [OPTIONS]
 ```
 
-You can find all options documented in the file itself. 
+You can find all options documented in the file itself.
 Important ones are "-gpuid" to set your GPU as well as "-label_index" to define
 which phenotype you want to detect. Here is the list that explains the indices:
 
