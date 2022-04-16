@@ -151,6 +151,7 @@ def main():
         if not os.path.isfile(
             os.path.join("converted/X_features-" + str(args.ngram) + ".npz")
         ):
+            os.mkdir("converted/")
             print("Computing features.")
             train_x = f["train"][:]
             valid_x = f["val"][:]
