@@ -135,3 +135,5 @@ converted/
 w2v.txt
 data.h5
 data-nobatch.h5
+conditions.dict
+words.dict
