@@ -129,3 +129,9 @@ dmypy.json
 .pyre/
 
 .DS_Store
+
+data/
+converted/
+w2v.txt
+data.h5
+data-nobatch.h5
