@@ -164,21 +164,25 @@ def main():
             print("Skipping Build of Ngrams: model already exists.")
             X_features = dict(
                 np.load(
-                    os.path.join("converted", "X_features-" + str(args.ngram) + ".npz")
+                    os.path.join("converted", "X_features-" + str(args.ngram) + ".npz"),
+                    allow_pickle=True,
                 )
             )["features"].item()
             val_X_features = dict(
                 np.load(
                     os.path.join(
-                        "converted", "val_X_features-" + str(args.ngram) + ".npz"
-                    )
+                        "converted",
+                        "val_X_features-" + str(args.ngram) + ".npz",
+                    ),
+                    allow_pickle=True,
                 )
             )["features"].item()
             test_X_features = dict(
                 np.load(
                     os.path.join(
                         "converted", "test_X_features-" + str(args.ngram) + ".npz"
-                    )
+                    ),
+                    allow_pickle=True,
                 )
             )["features"].item()
 
