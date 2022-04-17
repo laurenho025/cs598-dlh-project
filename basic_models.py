@@ -81,10 +81,12 @@ def extract_features(X, val_X, test_X, max_ngram_size=2):
 
 
 def make_predictions(X, Y, val_X, val_Y, test_X, test_Y, s):
-    # classifier = sklearn.svm.LinearSVC(n_jobs=2)
+    # classifier = sklearn.svm.LinearSVC()
     classifier = sklearn.linear_model.LogisticRegression(n_jobs=2)
     # classifier = sklearn.naive_bayes.GaussianNB()
-    # classifier = sklearn.svm.SVC(probability=True) # hard to scale to dataset with more than a couple of 10000 samples.
+    # classifier = sklearn.svm.SVC(
+    #     probability=True
+    # )  # hard to scale to dataset with more than a couple of 10000 samples.
 
     total_data = X.shape[0]
     # subset for analysis
@@ -151,7 +153,6 @@ def main():
         if not os.path.isfile(
             os.path.join("converted/X_features-" + str(args.ngram) + ".npz")
         ):
-            os.mkdir("converted/")
             print("Computing features.")
             train_x = f["train"][:]
             valid_x = f["val"][:]
