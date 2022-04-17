@@ -30,7 +30,7 @@ This will create `data.h5` and `data-nobatch.h5` in the root folder.
 
 ### Baseline Methods
 
-To run the baseline methods:
+Create a directory named `converted` in the root directory, if you have not run the baseline methods script previously. To run the baseline methods:
 
 ```
 python basic_models.py --data data-nobatch.h5 --ngram 5
