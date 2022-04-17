@@ -36,6 +36,8 @@ Create a directory named `converted` in the root directory, if you have not run 
 python basic_models.py --data data-nobatch.h5 --ngram 5
 ```
 
+ngram value should be set to 1 to run bag of words logistic regression
+
 ### Convolutional Neural Net (CNN)
 
 TODO: Update CNN instructions
