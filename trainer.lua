@@ -161,6 +161,12 @@ function Trainer:test(test_data, model, criterion, store_preds, opt)
             print('Total err: ' .. total_err / test_size)
         end
 
+        precision_score = confusion.mat[1][1] / (confusion.mat[1][1] + confusion.mat[2][1])
+        recall_score = confusion.mat[1][1] / (confusion.mat[1][1] + confusion.mat[1][2])
+        f1_score = 2*((precision_score * recall_score) / (precision_score + recall_score))
+        print("Precision: " .. precision_score)
+        print("Recall: " .. recall_score)
+        print("f1: " .. f1_score)
         -- return error percent
         confusion:updateValids()
         print("Test Score: " .. confusion.totalValid)
