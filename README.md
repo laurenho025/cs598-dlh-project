@@ -40,4 +40,43 @@ ngram value should be set to 1 to run bag of words logistic regression
 
 ### Convolutional Neural Net (CNN)
 
-TODO: Update CNN instructions
+Create a directory named `results` in the root directory, if you have not run the CNN script previously. First, run the following to install torch:
+
+```
+git clone https://github.com/torch/distro.git
+cd distro
+bash install-deps
+./install.sh
+```
+
+If you are using a Mac, first run:
+
+```
+brew install hdf5@1.8
+```
+
+Then run the following to install the correct version of hdf5:
+
+```
+git clone https://github.com/anibali/torch-hdf5.git
+cd torch-hdf5
+git checkout hdf5-1.10 
+luarocks make hdf5-0-0.rockspec
+```
+
+If you are using a Mac, edit the file `distro/install/share/lua/5.1/hdf5/config.lua to point to the brew installed 1.8 version of hdf5` to point to the brew installed version of hdf5:
+
+```
+hdf5._config = {
+      HDF5_INCLUDE_PATH = "/usr/local/Cellar/hdf5@1.8/1.8.22_3/include",
+      HDF5_LIBRARIES = "/usr/local/Cellar/hdf5@1.8/1.8.22_3/lib/libhdf5.dylib"
+}
+```
+
+Finally, run the CNN script using:
+
+```
+th main.lua -label_index i
+```
+
+i should be replaced with the label that you wish to train and evaluate the CNN for: Advanced Cancer (12), Advanced Heart Disease (5), Advanced Lung Disease (6), Chronic Neurological Dystrophies (11), Chronic Pain Fibromyalgia (10), Alcohol Abuse (8), Other Substance Abuse (9), Obesity (2), Schizophrenia and other Psychiatric Disorders (7), Depression (13)
