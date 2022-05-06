@@ -8,6 +8,8 @@ Paper ID: 116
 
 Code re-used from the original paper author: https://github.com/sebastianGehrmann/phenotyping
 
+Original paper: "Comparing deep learning and concept extraction based methods for patient phenotyping"
+
 ## Data
 
 Due to patient confidentiality requirements, we are not including the annotated dataset in this repository. The `data/annotations.csv` file is available in the original paper's code implementation [here](https://github.com/sebastianGehrmann/phenotyping). This file contains patient and hospital admission IDs, and the annotations done by the original paper authors. This file is missing the discharge summary text column, which can be obtained from MIMIC-III via physionet and should be saved as `data/NOTEEVENTS.csv`. To append the necessary column and get the full dataset, run the following command with python 3:
