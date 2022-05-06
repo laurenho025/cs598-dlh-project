@@ -64,7 +64,7 @@ git checkout hdf5-1.10
 luarocks make hdf5-0-0.rockspec
 ```
 
-If you are using a Mac, edit the file `distro/install/share/lua/5.1/hdf5/config.lua to point to the brew installed 1.8 version of hdf5` to point to the brew installed version of hdf5:
+If you are using a Mac, edit the file `distro/install/share/lua/5.1/hdf5/config.lua` to point to the brew installed version of hdf5:
 
 ```
 hdf5._config = {
